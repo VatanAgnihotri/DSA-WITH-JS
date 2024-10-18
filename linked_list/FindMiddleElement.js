@@ -1,5 +1,5 @@
 //Question: Write a Method called findMiddle that returns the middle element of a singly linked list. If the list has an even number of elements, return the second middle element.
-
+// This solution is when we don't know the tail of the linked list.
 const findMiddle = (list) => {
   let slow = (fast = list);
   while (fast?.next) {
