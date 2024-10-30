@@ -136,6 +136,32 @@ class DoublyLinkedList {
     curr.prev = null;
     return curr;
   }
+
+  // Question:: Implement a member function called swapFirstLast() that swaps the values of the first and last nodes of a doubly linked list.
+  swapFirstLast() {
+    if (this.length < 2) return undefined;
+    let temp = this.head.val;
+    this.head.val = this.tail.val;
+    this.tail.val = temp;
+    return this;
+  }
+
+  //Question:: Implement a member function called reverse() that reverses the nodes of a doubly linked list.
+  reverse() {
+    if (this.length < 1) return undefined;
+    let curr = this.head;
+    let prev = this.head.prev;
+    while (curr) {
+      curr.prev = curr.next;
+      curr.next = prev;
+      prev = curr;
+      curr = prev?.prev;
+    }
+    prev = this.head;
+    this.head = this.tail;
+    this.tail = prev;
+    return this;
+  }
 }
 
 const list = new DoublyLinkedList(10);
@@ -149,5 +175,7 @@ list.push(50);
 // console.log("GET :: ", list.get(1));
 // console.log("SET :: ", list.set(0, 5));
 // console.log("INSERT :: ", list.insert(2, 5));
-console.log(list.remove(4));
-console.log("list::", list);
+// console.log(list.remove(4));
+// console.log("swapFirstLast :: ", list.swapFirstLast());
+console.log("Reverse :: ", list.reverse());
+// console.log("list::", list);
