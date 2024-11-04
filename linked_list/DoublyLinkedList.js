@@ -162,6 +162,17 @@ class DoublyLinkedList {
     this.tail = prev;
     return this;
   }
+
+  detectCycle() {
+    let slow = this.head;
+    let fast = this.head;
+    while (fast?.next?.next) {
+      slow = slow.next;
+      fast = fast.next.next;
+      if (slow === fast) return true;
+    }
+    return false;
+  }
 }
 
 const list = new DoublyLinkedList(10);
@@ -177,5 +188,7 @@ list.push(50);
 // console.log("INSERT :: ", list.insert(2, 5));
 // console.log(list.remove(4));
 // console.log("swapFirstLast :: ", list.swapFirstLast());
-console.log("Reverse :: ", list.reverse());
+// console.log("Reverse :: ", list.reverse());
+// list.head.next.next.next.next = list.head.next.next;
+// console.log("Detect Cycle :: ", list.detectCycle());
 // console.log("list::", list);
