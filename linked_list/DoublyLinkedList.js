@@ -163,6 +163,7 @@ class DoublyLinkedList {
     return this;
   }
 
+  // Question:: Implement a function to detect if a doubly linked list has a cycle.
   detectCycle() {
     let slow = this.head;
     let fast = this.head;
@@ -173,13 +174,27 @@ class DoublyLinkedList {
     }
     return false;
   }
+
+  // Question::  Implement a memeber function called isPalindrome() that checks if a doubly linked list is a palindrome.
+  isPalindrome() {
+    let fwd = this.head;
+    let bckwd = this.tail;
+    let i = 0;
+    while (i < Math.floor(this.length / 2)) {
+      if (fwd.val !== bckwd.val) return false;
+      fwd = fwd.next;
+      bckwd = bckwd.prev;
+      i++;
+    }
+    return true;
+  }
 }
 
 const list = new DoublyLinkedList(10);
 list.push(20);
 list.push(30);
-list.push(40);
-list.push(50);
+// list.push(20);
+// list.push(10);
 // console.log("POP::", list.pop());
 // console.log(list.unshift(5));
 // console.log("SHIFT ::", list.shift());
@@ -191,4 +206,5 @@ list.push(50);
 // console.log("Reverse :: ", list.reverse());
 // list.head.next.next.next.next = list.head.next.next;
 // console.log("Detect Cycle :: ", list.detectCycle());
+console.log("IS PALINDROME :: ", list.isPalindrome());
 // console.log("list::", list);
