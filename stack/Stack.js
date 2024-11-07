@@ -9,10 +9,18 @@ class Node {
 class Stack {
   constructor(val) {
     let newNode = new Node(val);
-    this.topNode = newNode;
+    this.top = newNode;
     this.length = 1;
+  }
+
+  push(val) {
+    let newNode = new Node(val);
+    newNode.next = this.top;
+    this.top = newNode;
+    this.length++;
+    return this;
   }
 }
 
 let stack = new Stack(10);
-console.log(stack);
+console.log(stack.push(20));
