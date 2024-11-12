@@ -13,3 +13,5 @@ class Queue {
     this.length = 1;
   }
 }
+
+let queue = new Queue(10);
