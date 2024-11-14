@@ -31,8 +31,10 @@ class Stack {
   }
 }
 
-let stack = new Stack(10);
-stack.push(20);
-stack.push(30);
-console.log("POP :: ", stack.pop());
-console.log("STACK :: ", stack);
+// let stack = new Stack(10);
+// stack.push(20);
+// stack.push(30);
+// console.log("POP :: ", stack.pop());
+// console.log("STACK :: ", stack);
+
+module.exports = Stack;
