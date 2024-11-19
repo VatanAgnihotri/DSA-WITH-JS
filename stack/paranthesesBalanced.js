@@ -12,6 +12,7 @@ const isBalancedParentheses = (str) => {
     } else stack.push(str[i]);
     i++;
   }
+  
   if (stack.length === 0) return true;
   return false;
 };
