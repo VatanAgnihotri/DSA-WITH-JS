@@ -1,10 +1,9 @@
 //Question :: Implement a function called sortStack() that takes a stack of integers as input and sorts the stack in ascending order(with the smallest element on the top) using an additional temporary stack.
 
 const Stack = require("./Stack");
-const stack = new Stack(1).push(2).push(-5).push(7);
+const stack = new Stack(10).push(20).push(30).push(-10).push(-20);
 const sortStack = () => {
   const temp = new Stack();
-  let i = 0;
   let curr;
   while (stack.length > 0) {
     curr = !curr ? stack.pop() : curr;
@@ -18,7 +17,7 @@ const sortStack = () => {
   while (temp.length > 0) {
     stack.push(temp.pop().val);
   }
-  console.log(stack);
+  console.log(JSON.stringify(stack));
 };
 
 sortStack();
