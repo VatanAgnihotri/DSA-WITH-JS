@@ -8,9 +8,14 @@ class Node {
 // Stack Constructor
 class Stack {
   constructor(val) {
-    let newNode = new Node(val);
-    this.top = newNode;
-    this.length = 1;
+    if (val) {
+      let newNode = new Node(val);
+      this.top = newNode;
+      this.length = 1;
+    } else {
+      this.top = null;
+      this.length = 0;
+    }
   }
 
   push(val) {
