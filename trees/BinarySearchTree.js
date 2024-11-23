@@ -33,7 +33,14 @@ class BST {
   }
 
   find(val) {
-    
+    let temp = this.root;
+    if (!temp) return undefined;
+    while (temp) {
+      if (temp.val === val) return temp;
+      if (val > temp.val) temp = temp.right;
+      else temp = temp.left;
+    }
+    return undefined;
   }
 }
 
@@ -45,4 +52,5 @@ bst.insert(20);
 bst.insert(35);
 bst.insert(45);
 bst.insert(60);
-console.log(bst);
+let found = bst.find(50);
+console.log(found);
