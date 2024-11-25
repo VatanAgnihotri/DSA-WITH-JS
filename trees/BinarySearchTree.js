@@ -42,6 +42,21 @@ class BST {
     }
     return undefined;
   }
+
+  //Breadth First Search (BFS)
+  BFS() {
+    let current = this.root;
+    let queue = [];
+    let results = [];
+    queue.push(current);
+    while (queue.length) {
+      current = queue.shift();
+      results.push(current.val);
+      if (current.left) queue.push(current.left);
+      if (current.right) queue.push(current.right);
+    }
+    return results;
+  }
 }
 
 let bst = new BST();
@@ -52,5 +67,7 @@ bst.insert(20);
 bst.insert(35);
 bst.insert(45);
 bst.insert(60);
-let found = bst.find(50);
-console.log(found);
+// let found = bst.find(50);
+// console.log(found);
+
+console.log(bst.BFS());
