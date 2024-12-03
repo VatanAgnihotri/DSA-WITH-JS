@@ -81,6 +81,18 @@ class BST {
     traversal(this.root);
     return results;
   }
+
+  //Depth First Search (DFS) --> InOrder
+  inOrderDFS() {
+    let results = [];
+    const traversal = (node) => {
+      if (node.left) traversal(node.left);
+      results.push(node.val);
+      if (node.right) traversal(node.right);
+    };
+    traversal(this.root);
+    return results;
+  }
 }
 
 let bst = new BST();
@@ -96,4 +108,5 @@ bst.insert(55);
 
 // console.log(bst.BFS());
 // console.log(bst.preOrderDFS());
-console.log(bst.postOrderDFS());
+// console.log(bst.postOrderDFS());
+console.log(bst.inOrderDFS());
