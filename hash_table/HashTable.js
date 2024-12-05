@@ -17,11 +17,21 @@ class HashTable {
     this.dataMap[index].push([key, value]);
     return this;
   }
+
+  get(key) {
+    let index = this.hash(key);
+    if (this.dataMap[index]) {
+      for (let i = 0; i < this.dataMap[index].length; i++) {
+        if (this.dataMap[index][i][0] === key) return this.dataMap[index][i][1];
+      }
+    }
+    return undefined;
+  }
 }
 
 const myHash = new HashTable();
 myHash.set("NAME", "Zayn");
-myHash.set("Naam", "Zayn");
-myHash.set("Name", "Zayn")
-const set = myHash.set("Name", "Zayn");
-console.log(JSON.stringify(set));
+myHash.set("Naam", "Maan");
+myHash.set("Name", "Stacy");
+const set = myHash.set("Name1", "Tom");
+console.log(JSON.stringify(myHash.get("Name1")));
