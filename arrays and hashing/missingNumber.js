@@ -33,10 +33,17 @@
 // All the numbers of nums are unique.
 
 var missingNumber = function (nums) {
-  //   Solution 1
-    const hashSet = new Set(nums);
-    for (var i = 0; i < nums.length; i++) {
-      if (!hashSet.has(i)) return i;
-    }
-    return i;
+    //Solution 1
+    // const hashSet = new Set(nums);
+    // for (var i = 0; i < nums.length; i++) {
+    //   if (!hashSet.has(i)) return i;
+    // }
+    // return i;
+
+   //Solution 2
+   let res = nums.length;
+   for (let i = 0; i < nums.length; i++) {
+     res += i - nums[i];
+   }
+   return res;   
 };
