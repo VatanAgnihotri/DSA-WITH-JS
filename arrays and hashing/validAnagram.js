@@ -29,7 +29,17 @@ const validAnagram = (s, t) => {
   // }
   // return true;
 
+
+  
   //Solution 2
+  // const first = s.split('').sort().join('');
+  // const second = t.split('').sort().join('');
+  // return first === second
+
+
+
+
+  //Solution 3
   if (s.length !== t.length) return false;
   const hashMap = {};
   for (let i = 0; i < s.length; i++) {
