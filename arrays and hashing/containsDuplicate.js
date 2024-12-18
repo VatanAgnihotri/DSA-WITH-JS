@@ -16,10 +16,19 @@
 // Output: true
 
 const containsDuplicate = (nums) => {
-  const hashSet = new Set();
-  for (let i = 0; i < nums.length; ++i) {
-    if (hashSet.has(nums[i])) return true;
-    else hashSet.add(nums[i]);
+  //With Set
+  // const hashSet = new Set();
+  // for (let i = 0; i < nums.length; ++i) {
+  //   if (hashSet.has(nums[i])) return true;
+  //   else hashSet.add(nums[i]);
+  // }
+  // return false;
+
+  //With Object
+  const hashMap = {};
+  for (let num of nums) {
+    if (hashMap[num]) return true;
+    hashMap[num] = true;
   }
   return false;
 };
