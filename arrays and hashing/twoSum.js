@@ -19,11 +19,20 @@
 // Output: [0,1]
 
 const twoSums = (nums, target) => {
-  const hashMap = new Map();
+  //Solution 1
+  // const hashMap = new Map();
+  // for (let i = 0; i < nums.length; i++) {
+  //   if (hashMap.has(target - nums[i]))
+  //     return [hashMap.get(target - nums[i]), i];
+  //   hashMap.set(nums[i], i);
+  // }
+
+  //Solutin 2
+  const hashMap = {};
   for (let i = 0; i < nums.length; i++) {
-    if (hashMap.has(target - nums[i]))
-      return [hashMap.get(target - nums[i]), i];
-    hashMap.set(nums[i], i);
+    if (hashMap[target - nums[i]] !== undefined)
+      return [hashMap[target - nums[i]], i];
+    hashMap[nums[i]] = i;
   }
 };
 
