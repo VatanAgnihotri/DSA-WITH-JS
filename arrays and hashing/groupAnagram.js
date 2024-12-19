@@ -16,16 +16,31 @@
 // Output: [["a"]]
 
 const groupAnagrams = (strs) => {
-  const hashMap = new Map();
+  //Solution 1
+  // const hashMap = new Map();
 
-  for (const value of strs) {
-    const sortedStr = value.split("").sort().join();
-    hashMap.has(sortedStr)
-      ? hashMap.set(sortedStr, [...hashMap.get(sortedStr), value])
-      : hashMap.set(sortedStr, [value]);
+  // for (const value of strs) {
+  //   const sortedStr = value.split("").sort().join();
+  //   hashMap.has(sortedStr)
+  //     ? hashMap.set(sortedStr, [...hashMap.get(sortedStr), value])
+  //     : hashMap.set(sortedStr, [value]);
+  // }
+
+  // return [...hashMap.values()];
+
+  //Solution 2
+  const hashMap = {};
+  const output = [];
+  for (let i = 0; i < strs.length; i++) {
+    const cur = strs[i].split("").sort().join();
+    if (hashMap[cur] === undefined) {
+      hashMap[cur] = output.length;
+      output.push([strs[i]]);
+    } else {
+      output[hashMap[cur]].push(strs[i]);
+    }
   }
-
-  return [...hashMap.values()];
+  return output;
 };
 
 console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));
