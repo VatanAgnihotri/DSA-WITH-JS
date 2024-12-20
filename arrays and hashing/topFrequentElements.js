@@ -12,9 +12,7 @@
 const topKFrequent = (nums, k) => {
   const hashMap = new Map();
   for (let i = 0; i < nums.length; i++) {
-    hashMap.has(nums[i])
-      ? hashMap.set(nums[i], hashMap.get(nums[i]) + 1)
-      : hashMap.set(nums[i], 1);
+    hashMap.set(nums[i], (hashMap.get(nums[i]) || 0) + 1);
   }
   const hashMap1 = new Map(
     [...hashMap.entries()].sort((a, b) => b[1] - a[1]).slice(0, k)
