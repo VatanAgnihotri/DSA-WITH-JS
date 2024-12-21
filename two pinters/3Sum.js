@@ -29,34 +29,57 @@
 // -105 <= nums[i] <= 105
 
 let threeSum = function (nums) {
-  const sortedArr = nums.sort((a, b) => a - b);
-  const hashMap = new Map();
-  sortedArr.forEach((num, index, arr) => {
-    if (num !== arr[index - 1]) {
-      let left = index + 1;
-      let right = arr.length - 1;
-      while (left < right) {
-        if (num + (arr[left] + arr[right]) < 0) {
-          left++;
-          continue;
-        }
-        if (num + (arr[left] + arr[right]) > 0) {
-          right--;
-          continue;
-        }
-        if (num + (arr[left] + arr[right]) === 0) {
-          if (!hashMap.has(`[${num}, ${arr[left]}, ${arr[right]}]`))
-            hashMap.set(`[${num}, ${arr[left]}, ${arr[right]}]`, [
-              num,
-              arr[left],
-              arr[right],
-            ]);
-          right--;
+  //SOLUTION 1
+  // const sortedArr = nums.sort((a, b) => a - b);
+  // const hashMap = new Map();
+  // sortedArr.forEach((num, index, arr) => {
+  //   if (num !== arr[index - 1]) {
+  //     let left = index + 1;
+  //     let right = arr.length - 1;
+  //     while (left < right) {
+  //       if (num + (arr[left] + arr[right]) < 0) {
+  //         left++;
+  //         continue;
+  //       }
+  //       if (num + (arr[left] + arr[right]) > 0) {
+  //         right--;
+  //         continue;
+  //       }
+  //       if (num + (arr[left] + arr[right]) === 0) {
+  //         if (!hashMap.has(`[${num}, ${arr[left]}, ${arr[right]}]`))
+  //           hashMap.set(`[${num}, ${arr[left]}, ${arr[right]}]`, [
+  //             num,
+  //             arr[left],
+  //             arr[right],
+  //           ]);
+  //         right--;
+  //       }
+  //     }
+  //   }
+  // });
+  // return [...hashMap.values()];
+
+  //Solution 2
+  nums.sort((a, b) => a - b);
+  const results = [];
+  for (let i = 0; i < nums.length - 2; i++) {
+    if (nums[i] === nums[i - 1]) continue;
+    let p = nums[i];
+    let l = i + 1;
+    let r = nums.length - 1;
+    while (l < r) {
+      if (p + nums[l] + nums[r] === 0) {
+        results.push([p, nums[l], nums[r]]);
+        l++;
+        while (nums[l] == nums[l - 1] && l < r) {
+          l++;
         }
       }
+      if (p + nums[l] + nums[r] > 0) r--;
+      if (p + nums[l] + nums[r] < 0) l++;
     }
-  });
-  return [...hashMap.values()];
+  }
+  return results;
 };
 
 console.log(threeSum([-1, 0, 1, 2, -1, -4]));
