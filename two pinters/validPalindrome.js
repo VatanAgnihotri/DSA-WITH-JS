@@ -25,17 +25,22 @@
 // s consists only of printable ASCII characters.
 
 const isPalindrome = function (s) {
+  // Solution 1
+  // if (!s.length) return false;
+  // const str = s.replace(/[^A-Z0-9]/gi, "").toLowerCase();
+  // let l = 0;
+  // let r = str.length - 1;
+  // while (l < r) {
+  //   if (str[l] !== str[r]) {
+  //     return false;
+  //   }
+  //   l++;
+  //   r--;
+  // }
+  // return true;
+
+  //Solution 2
   if (!s.length) return false;
   const str = s.replace(/[^A-Z0-9]/gi, "").toLowerCase();
-
-  let l = -0;
-  let r = str.length - 1;
-  while (l < r) {
-    if (str[l] !== str[r]) {
-      return false;
-    }
-    l++;
-    r--;
-  }
-  return true;
+  return str.split("").reverse().join("") === str;
 };
