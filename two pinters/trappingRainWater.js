@@ -17,20 +17,20 @@
 // 0 <= height[i] <= 105
 
 let trap = function (height) {
-  let water = 0;
-  let maxLeft = height[0];
-  let maxRight = height[height - 1];
+  let maxLeft = (maxRight = 0);
   let l = 0;
   let r = height.length - 1;
-  while (l < r) {
-    if (maxLeft < maxRight) {
-      l++;
+  let water = 0;
+  while (l <= r) {
+    if (height[l] < height[r]) {
+      water += Math.max(0, maxLeft - height[l]);
       maxLeft = Math.max(maxLeft, height[l]);
-      water += maxLeft - height[l];
+      l++;
     } else {
-      r--;
+      water += Math.max(0, maxRight - height[r]);
       maxRight = Math.max(maxRight, height[r]);
-      water += maxRight - height[r];
+      r--;
     }
   }
+  return water;
 };
