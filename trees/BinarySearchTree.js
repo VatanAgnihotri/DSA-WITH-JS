@@ -107,6 +107,6 @@ bst.insert(55);
 // console.log(found);
 
 // console.log(bst.BFS());
-// console.log(bst.preOrderDFS());
-// console.log(bst.postOrderDFS());
-console.log(bst.inOrderDFS());
+console.log("PREORDER :: ", bst.preOrderDFS());
+console.log("POSTORDER :: ", bst.postOrderDFS());
+console.log("INORDER :: ", bst.inOrderDFS());
