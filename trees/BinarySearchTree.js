@@ -106,7 +106,7 @@ bst.insert(55);
 // let found = bst.find(50);
 // console.log(found);
 
-// console.log(bst.BFS());
+console.log("BFS ::", bst.BFS());
 console.log("PREORDER :: ", bst.preOrderDFS());
 console.log("POSTORDER :: ", bst.postOrderDFS());
 console.log("INORDER :: ", bst.inOrderDFS());
