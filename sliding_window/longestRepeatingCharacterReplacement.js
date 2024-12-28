@@ -22,21 +22,38 @@
 // 0 <= k <= s.length
 
 const characterReplacement = (s, k) => {
-  let l = 0;
-  let r = 0;
-  const countMap = {};
-  let maxFreq = 0;
-  let maxLength = 0;
+  //Solution 1
+  // let l = 0;
+  // let r = 0;
+  // const countMap = {};
+  // let maxFreq = 0;
+  // let maxLength = 0;
 
-  while (r < s.length) {
-    countMap[s[r]] = (countMap[s[r]] || 0) + 1;
-    maxFreq = Math.max(maxFreq, countMap[s[r]]);
+  // while (r < s.length) {
+  //   countMap[s[r]] = (countMap[s[r]] || 0) + 1;
+  //   maxFreq = Math.max(maxFreq, countMap[s[r]]);
+  //   while (r - l + 1 - maxFreq > k) {
+  //     countMap[s[l]]--;
+  //     l++;
+  //   }
+  //   maxLength = Math.max(maxLength, r - l + 1);
+  //   r++;
+  // }
+  // return maxLength;
+
+  //Solution 2
+  let maxFreq = 0;
+  let l = 0;
+  let map = {};
+  let window = 0;
+  for (let r = 0; r < s.length; r++) {
+    map[s[r]] = (map[s[r]] || 0) + 1;
+    maxFreq = Math.max(maxFreq, map[s[r]]);
     while (r - l + 1 - maxFreq > k) {
-      countMap[s[l]]--;
+      map[s[l]]--;
       l++;
     }
-    maxLength = Math.max(maxLength, r - l + 1);
-    r++;
+    window = Math.max(window, r - l + 1);
   }
-  return maxLength;
+  return window;
 };
