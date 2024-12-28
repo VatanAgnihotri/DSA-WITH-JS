@@ -25,20 +25,35 @@
 // s consists of English letters, digits, symbols and spaces.
 
 const lengthOfLongestSubstring = (s) => {
-  let l = (r = 0);
-  let hashSet = new Set();
-  let maxLength = 0;
-  while (r < s.length) {
-    if (!hashSet.has(s[r])) {
-      hashSet.add(s[r]);
-      maxLength = Math.max(maxLength, r - l + 1);
-      r++;
-    } else {
-      hashSet.delete(s[l]);
+  // Solution 1
+  // let l = (r = 0);
+  // let hashSet = new Set();
+  // let maxLength = 0;
+  // while (r < s.length) {
+  //   if (!hashSet.has(s[r])) {
+  //     hashSet.add(s[r]);
+  //     maxLength = Math.max(maxLength, r - l + 1);
+  //     r++;
+  //   } else {
+  //     hashSet.delete(s[l]);
+  //     l++;
+  //   }
+  // }
+  // return maxLength;
+
+  // Solution 2
+  let l = 0;
+  let window = 0;
+  let set = new Set();
+  for (let r = 0; r < s.length; r++) {
+    while (set.has(s[r])) {
+      set.delete(s[l]);
       l++;
     }
+    set.add(s[r]);
+    window = Math.max(window, r - l + 1);
   }
-  return maxLength;
+  return window;
 };
 
 console.log(lengthOfLongestSubstring("pwwkew"));
