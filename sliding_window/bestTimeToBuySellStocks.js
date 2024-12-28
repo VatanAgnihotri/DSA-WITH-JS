@@ -22,15 +22,13 @@
 // 0 <= prices[i] <= 104
 
 var maxProfit = function (prices) {
-  let maxProfit = 0;
   let minPrice = Infinity;
-  let i = 0;
-  while (i < prices.length) {
-    minPrice = Math.min(minPrice, prices[i]);
-    maxProfit = Math.max(maxProfit, prices[i] - minPrice);
-    i++;
+  let maxProfit = 0;
+  for (let price of prices) {
+      minPrice = Math.min(minPrice, price);
+      maxProfit = Math.max(maxProfit, price - minPrice);
   }
-  return maxProfit;
+  return maxProfit
 };
 
 console.log(maxProfit([7, 1, 5, 3, 6, 4]));
