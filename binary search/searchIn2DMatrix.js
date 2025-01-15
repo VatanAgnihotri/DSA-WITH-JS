@@ -23,35 +23,53 @@
 // -104 <= matrix[i][j], target <= 104
 
 let searchMatrix = function (matrix, target) {
-  let top = 0;
-  let bottom = matrix.length - 1;
-  let cols = matrix[0].length - 1;
-  let row = 0;
-  while (top <= bottom) {
-    let m = Math.floor((bottom + top) / 2);
-    if (target < matrix[m][0]) {
-      bottom = m - 1;
-    } else if (target > matrix[m][cols]) {
-      top = m + 1;
-    } else {
-      break;
-    }
-  }
-  if (!(top <= bottom)) return false;
+  // Sloution 1
 
-  row = Math.floor((top + bottom) / 2);
+  // let top = 0;
+  // let bottom = matrix.length - 1;
+  // let cols = matrix[0].length - 1;
+  // let row = 0;
+  // while (top <= bottom) {
+  //   let m = Math.floor((bottom + top) / 2);
+  //   if (target < matrix[m][0]) {
+  //     bottom = m - 1;
+  //   } else if (target > matrix[m][cols]) {
+  //     top = m + 1;
+  //   } else {
+  //     break;
+  //   }
+  // }
+  // if (!(top <= bottom)) return false;
+  // row = Math.floor((top + bottom) / 2);
+  // let left = 0;
+  // let right = cols;
+  // while (left <= right) {
+  //   let m = Math.floor((left + right) / 2);
+  //   if (target < matrix[row][m]) {
+  //     right = m - 1;
+  //   } else if (target > matrix[row][m]) {
+  //     left = m + 1;
+  //   } else {
+  //     return true;
+  //   }
+  // }
+  // return false;
 
+  // Sloution 2
+
+  let m = matrix.length;
+  let n = matrix[0].length;
   let left = 0;
-  let right = cols;
+  let right = m * n - 1;
   while (left <= right) {
-    let m = Math.floor((left + right) / 2);
-    if (target < matrix[row][m]) {
-      right = m - 1;
-    } else if (target > matrix[row][m]) {
-      left = m + 1;
-    } else {
-      return true;
-    }
+    const mid = Math.floor((left + right) / 2);
+    const row = Math.floor(mid / n);
+    const col = mid % n;
+    if (matrix[row][col] > target) {
+      right = mid - 1;
+    } else if (matrix[row][col] < target) {
+      left = mid + 1;
+    } else return true;
   }
-  return false; 
+  return false;
 };
